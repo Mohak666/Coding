@@ -3,20 +3,26 @@ m = 4
 mat = []
 def assignNumbers(bombs,n,m):
     for bomb in bombs:
-        mat[bomb[0]][bomb[1]] = -1;
+        bombX = bomb[0]
+        bombY = bomb[1]
+        # -1 represenst bombs
+        mat[bombX][bombY] = -1;
         print(mat)
-        startx = starty =0;
-        if(bomb[0] == 0):
-            startx = 0
+        startX = startY =endX = endY=0;
+        if(bombX == 0):
+            startX = 0
+            endX = 2
         else:
-            startx = bomb[0] -1
-
-        for x in range(startx,startx+3):
-            if(bomb[1] == 0):
-                starty = 0;
+            startX = bombX -1
+            endX =   bombX+2
+        for x in range(startX,endX):
+            if(bombY == 0):
+                startY = 0;
+                endY = 2
             else:
-                starty = bomb[1]-1
-            for y in range(starty,starty+3):
+                startY = bombY-1
+                endY = bombY+2
+            for y in range(startY,endY):
                 if (mat[x][y]>-1):
                     mat[x][y]+=1;
     print(mat)
